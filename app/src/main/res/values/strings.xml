@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SetAppFull</string>
+    <string name="xposeddescription">set app to full screen run.</string>
+    <string-array name="xposedscope">
+        <item>android</item>
+    </string-array>
+</resources>
