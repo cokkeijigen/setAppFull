@@ -28,7 +28,7 @@ public class AppSettings {
     private static final String TAG = "test_";
     private static final String config_name = "config";
     private final SharedPreferences getPrefs;
-    private final String content;
+    private String content;
 
     public AppSettings(Context context) {
         this.getPrefs = context.getSharedPreferences(config_name, Context.MODE_PRIVATE);
@@ -40,12 +40,12 @@ public class AppSettings {
         if(!content.contains("#" + pkgn + "#"))
             data.append("#").append(pkgn).append("#");
         getPrefs.edit().putString("content", data.toString()).commit();
-        SuperUser.copyConfigFile();
+        SuperUser.copyConfigFile(false);
     }
 
     public void delData(String pkgn){
-        getPrefs.edit().putString("content", content.replace("#" + pkgn + "#", "")).commit();
-        SuperUser.copyConfigFile();
+        getPrefs.edit().putString("content", (this.content = content.replace("#" + pkgn + "#", ""))).commit();
+        SuperUser.copyConfigFile(false);
     }
 
     public boolean getData(String pkgn){
@@ -58,7 +58,7 @@ public class AppSettings {
 
     public void savonSwitch(boolean value) {
         getPrefs.edit().putBoolean("onSwitchListView", value).commit();
-        SuperUser.copyConfigFile();
+        SuperUser.copyConfigFile(false);
     }
 
     public static void setStatusBarColor(Activity activity, int color){

@@ -26,16 +26,22 @@ public class SuperUser {
         return result.toString();
     }
 
-    public static void copyConfigFile(){
-        String path = "/data/system/shared_prefs/";
-        execShell("mkdir " + path);
-        String config = path +"config.xml";
-        execShell(((StringBuilder)(new StringBuilder()))
-                .append("\\cp ").append(Environment.getDataDirectory())
-                .append("/data/").append(BuildConfig.APPLICATION_ID)
-                .append("/shared_prefs/config.xml ")
-                .append(config)
-        .toString());
-        execShell("chmod 644 " + config);
+    public static void copyConfigFile(boolean is){
+        String user_path = Environment.getDataDirectory() + "/data/" + BuildConfig.APPLICATION_ID + "/shared_prefs/";
+        String sys_path = "/data/system/shared_prefs/";
+        String file = "config.xml";
+        if (is) {
+            execShell("mkdir " + user_path);
+            execShell(String.format("\\cp %s%s %s%s", sys_path, file, user_path, file));
+        }else {
+            execShell("mkdir " + sys_path);
+            execShell(String.format("\\cp %s%s %s%s", user_path, file, sys_path, file));
+        }
+        execShell(String.format("chmod 644 %s%s", sys_path,file));
+    }
+
+    public static void delete(){
+        execShell(String.format("rm -f %s/data/%s/shared_prefs/config.xml",
+                Environment.getDataDirectory(),BuildConfig.APPLICATION_ID));
     }
 }

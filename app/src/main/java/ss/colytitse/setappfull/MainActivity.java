@@ -44,6 +44,9 @@ public class MainActivity extends Activity {
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try {
+            SuperUser.copyConfigFile(true);
+        }catch (Throwable ignored){}
         setContentView(R.layout.main_layout);
         setActivityStatusBar(this);
         initApplicationList();
@@ -51,9 +54,6 @@ public class MainActivity extends Activity {
         setVersionName.setText("当前版本：" + getVersionName(mContext));
         initMainActivityListView(new AppSettings(mContext).getOnSwitchListView() ? userAppList : systemAppList);
 
-        try {
-            Runtime.getRuntime().exec("su");
-        }catch (Throwable ignored){}
     }
 
     public void initMainActivityListView(List<PackageInfo> appList){
@@ -120,5 +120,11 @@ public class MainActivity extends Activity {
             if (info.packageName.contains(intext) || getPackageManager().getApplicationLabel(info.applicationInfo).toString().contains(intext))
                 result.add(info);
         return result;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SuperUser.delete();
     }
 }
