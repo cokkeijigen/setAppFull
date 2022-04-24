@@ -30,20 +30,23 @@ public class SuperUser {
         String user_path = Environment.getDataDirectory() + "/data/" + BuildConfig.APPLICATION_ID + "/shared_prefs/";
         String sys_path = "/data/system/shared_prefs/";
         String file = "config.xml";
+        String log = "";
         if (is) {
-            execShell("mkdir " + user_path);
-            execShell(String.format("\\cp %s%s %s%s", sys_path, file, user_path, file));
+            log += execShell("mkdir " + user_path);
+            log += execShell(String.format("\\cp %s%s %s%s", sys_path, file, user_path, file));
             file = String.format("%s%s", user_path,file);
         }else {
-            execShell("mkdir " + sys_path);
-            execShell(String.format("\\cp %s%s %s%s", user_path, file, sys_path, file));
+            log += execShell("mkdir " + sys_path);
+            log += execShell(String.format("\\cp %s%s %s%s", user_path, file, sys_path, file));
             file = String.format("%s%s", sys_path, file);
         }
-        execShell(String.format("chmod 644 %s", file));
+        log += execShell(String.format("chmod 644 %s", file));
+        Log.d(TAG, "copyConfigFile: " + log);
     }
 
     public static void delete(){
-        execShell(String.format("rm -f %s/data/%s/shared_prefs/config.xml",
+        String log = execShell(String.format("rm -f %s/data/%s/shared_prefs/config.xml",
                 Environment.getDataDirectory(),BuildConfig.APPLICATION_ID));
+        Log.d(TAG, "delete: " + log);
     }
 }
