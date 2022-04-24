@@ -37,7 +37,7 @@ public class SuperUser {
         }else {
             execShell("mkdir " + sys_path);
             execShell(String.format("\\cp %s%s %s%s", user_path, file, sys_path, file));
-            file = String.format("%s%s", sys_path,file);
+            file = String.format("%s%s", sys_path, file);
         }
         execShell(String.format("chmod 644 %s", file));
     }
