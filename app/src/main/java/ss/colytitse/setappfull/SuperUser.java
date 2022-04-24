@@ -33,11 +33,13 @@ public class SuperUser {
         if (is) {
             execShell("mkdir " + user_path);
             execShell(String.format("\\cp %s%s %s%s", sys_path, file, user_path, file));
+            file = String.format("%s%s", user_path,file);
         }else {
             execShell("mkdir " + sys_path);
             execShell(String.format("\\cp %s%s %s%s", user_path, file, sys_path, file));
+            file = String.format("%s%s", sys_path,file);
         }
-        execShell(String.format("chmod 644 %s%s", sys_path,file));
+        execShell(String.format("chmod 644 %s", file));
     }
 
     public static void delete(){
