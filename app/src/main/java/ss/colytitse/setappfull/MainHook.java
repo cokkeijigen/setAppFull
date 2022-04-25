@@ -53,8 +53,8 @@ public class MainHook implements IXposedHookLoadPackage {
                     WindowManager.LayoutParams attrs = (WindowManager.LayoutParams) getObjectField(param.args[0], "mAttrs");
                     if (attrs.type > WindowManager.LayoutParams.LAST_APPLICATION_WINDOW)
                         return;
-                        if (finalRule.contains(attrs.packageName))
-                            attrs.layoutInDisplayCutoutMode = LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+                    if (finalRule.contains(attrs.packageName))
+                        attrs.layoutInDisplayCutoutMode = LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
 
                 }
             };
