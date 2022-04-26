@@ -26,11 +26,12 @@ public class MainHook implements IXposedHookLoadPackage {
     }
 
     @Override
-    public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
+    public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) {
         if (!lpparam.packageName.equals(lpparam.processName) && !lpparam.packageName.equals("android"))
             return;
         Log.d(TAG, "SetAppFull: 运行成功！");
-       String configContent = loadConfig();
+        
+        String configContent = loadConfig();
         if (configContent.equals("")) return;
 
         XC_MethodHook MethodHook = new XC_MethodHook() {
@@ -44,7 +45,7 @@ public class MainHook implements IXposedHookLoadPackage {
                     attrs.layoutInDisplayCutoutMode = LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
             }
         };
-        
+
         findAndHookMethod("com.android.server.wm.DisplayPolicy", lpparam.classLoader,
                 "layoutWindowLw","com.android.server.wm.WindowState",
                 "com.android.server.wm.WindowState", "com.android.server.wm.DisplayFrames",
