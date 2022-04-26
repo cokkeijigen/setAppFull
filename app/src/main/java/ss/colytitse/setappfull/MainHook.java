@@ -3,19 +3,12 @@ package ss.colytitse.setappfull;
 import static android.view.WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
-
 import android.os.Build;
-import android.os.Environment;
 import android.util.Log;
 import android.view.WindowManager;
-
 import androidx.annotation.RequiresApi;
-
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
@@ -26,26 +19,20 @@ public class MainHook implements IXposedHookLoadPackage {
 
     private static final String TAG = "test_";
 
+    private String loadConfig(){
+        XSharedPreferences xsp = new XSharedPreferences(new File("/data/system/shared_prefs/config.xml"));
+        Log.d(TAG, "内容？: "+ xsp.getAll().toString());
+        return xsp.getString("content", "");
+    }
+
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
         if (!lpparam.packageName.equals(lpparam.processName) && !lpparam.packageName.equals("android"))
             return;
         Log.d(TAG, "SetAppFull: 运行成功！");
-        XSharedPreferences xSharedPreferences = null;
-        String rule = "";
+       String configContent = loadConfig();
+        if (configContent.equals("")) return;
         try {
-            xSharedPreferences = new XSharedPreferences(
-                    new File("/data/system/shared_prefs/config.xml")
-            );
-            rule = xSharedPreferences.getString("content", "");
-            Log.d(TAG, "内容？: "+ xSharedPreferences.getAll().toString());
-
-        }catch (Throwable t) {
-            Log.d(TAG, "错误: " + t);
-        }
-
-        try {
-            String finalRule = rule;
             XC_MethodHook hook = new XC_MethodHook() {
                 @RequiresApi(api = Build.VERSION_CODES.P)
                 @Override
@@ -53,9 +40,8 @@ public class MainHook implements IXposedHookLoadPackage {
                     WindowManager.LayoutParams attrs = (WindowManager.LayoutParams) getObjectField(param.args[0], "mAttrs");
                     if (attrs.type > WindowManager.LayoutParams.LAST_APPLICATION_WINDOW)
                         return;
-                    if (finalRule.contains(attrs.packageName))
+                    if (configContent.contains(attrs.packageName))
                         attrs.layoutInDisplayCutoutMode = LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
-
                 }
             };
             findAndHookMethod(
