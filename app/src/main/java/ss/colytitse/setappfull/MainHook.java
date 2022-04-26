@@ -32,30 +32,24 @@ public class MainHook implements IXposedHookLoadPackage {
         Log.d(TAG, "SetAppFull: 运行成功！");
        String configContent = loadConfig();
         if (configContent.equals("")) return;
-        try {
-            XC_MethodHook hook = new XC_MethodHook() {
-                @RequiresApi(api = Build.VERSION_CODES.P)
-                @Override
-                protected void beforeHookedMethod(MethodHookParam param) throws FileNotFoundException {
-                    WindowManager.LayoutParams attrs = (WindowManager.LayoutParams) getObjectField(param.args[0], "mAttrs");
-                    if (attrs.type > WindowManager.LayoutParams.LAST_APPLICATION_WINDOW)
-                        return;
-                    if (configContent.contains(attrs.packageName))
-                        attrs.layoutInDisplayCutoutMode = LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
-                }
-            };
-            findAndHookMethod(
-                    "com.android.server.wm.DisplayPolicy",
-                    lpparam.classLoader,
-                    "layoutWindowLw",
-                    "com.android.server.wm.WindowState",
-                    "com.android.server.wm.WindowState",
-                    "com.android.server.wm.DisplayFrames",
-                    hook
-            );
-        } catch (Throwable t) {
-            XposedBridge.log(t);
-        }
+
+        XC_MethodHook MethodHook = new XC_MethodHook() {
+            @RequiresApi(api = Build.VERSION_CODES.P)
+            @Override
+            protected void beforeHookedMethod(MethodHookParam param) {
+                WindowManager.LayoutParams attrs = (WindowManager.LayoutParams) getObjectField(param.args[0], "mAttrs");
+                if (attrs.type > WindowManager.LayoutParams.LAST_APPLICATION_WINDOW)
+                    return;
+                if (configContent.contains(attrs.packageName))
+                    attrs.layoutInDisplayCutoutMode = LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+            }
+        };
+        
+        findAndHookMethod("com.android.server.wm.DisplayPolicy", lpparam.classLoader,
+                "layoutWindowLw","com.android.server.wm.WindowState",
+                "com.android.server.wm.WindowState", "com.android.server.wm.DisplayFrames",
+                MethodHook
+        );
     }
 
 }
