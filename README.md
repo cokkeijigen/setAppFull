@@ -3,8 +3,7 @@ set app to full screen run.<br>
 将应用突破次元壁，覆盖异形屏幕限制全面显示_(:з」∠)_<br>
 强制让异形屏幕的手机运行游戏时可以全屏显示无黑边<br>
 借鉴了[BCRfullscreen](https://github.com/KitsunePie/BCRfullscreen)<br>
-<br>
-#### 版本更新说明<br>
+### 版本更新说明<br>
 v1.0 请自行跳转[https://github.com/cokkeijigen/setAppFull_1.0](https://github.com/cokkeijigen/setAppFull_1.0)<br>
 beta-1.2:<br>
 ﹂先发布试试水怎么样<br>
