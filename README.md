@@ -6,13 +6,13 @@ set app to full screen run.<br>
 ### 版本更新说明<br>
 v1.0 请自行跳转[https://github.com/cokkeijigen/setAppFull_1.0](https://github.com/cokkeijigen/setAppFull_1.0)<br>
 beta-1.2:<br>
-﹂先发布试试水怎么样<br>
+  先发布试试水怎么样<br>
 ver-1.2:<br>
-﹂更改配置文件存储方案<br>
+  更改配置文件存储方案<br>
 ver-1.3：<br>
-﹂优化1.2的配置文件的存储（妈的上个版本写的太傻逼了，现在改回来最初的方案）<br>
+  优化1.2的配置文件的存储（妈的上个版本写的太傻逼了，现在改回来最初的方案）<br>
 ver-1.3.1<br>
-﹂优化搜索内容
+  优化搜索内容
 <br>
 # 勾选应用重启系统即可 <br>
 ### （注意：非类原生的系统谨慎使用，例如MIUI可能会卡在开机页）<br>
