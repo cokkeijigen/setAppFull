@@ -1,4 +1,4 @@
-package ss.colytitse.setappfull;
+package ss.colytitse.setappfull.app;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -6,21 +6,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 
 import androidx.core.content.ContextCompat;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import de.robv.android.xposed.XSharedPreferences;
+import ss.colytitse.setappfull.R;
 
 @SuppressLint("ApplySharedPref")
 public class AppSettings {

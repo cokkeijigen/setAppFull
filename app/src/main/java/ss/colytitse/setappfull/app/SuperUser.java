@@ -1,4 +1,4 @@
-package ss.colytitse.setappfull;
+package ss.colytitse.setappfull.app;
 
 import android.util.Log;
 import java.io.BufferedReader;

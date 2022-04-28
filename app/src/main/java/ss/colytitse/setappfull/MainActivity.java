@@ -1,6 +1,6 @@
 package ss.colytitse.setappfull;
 
-import static ss.colytitse.setappfull.AppSettings.*;
+import static ss.colytitse.setappfull.app.AppSettings.*;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -21,6 +21,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+
+import ss.colytitse.setappfull.app.AppInfoAdapter;
+import ss.colytitse.setappfull.app.AppSettings;
 
 @SuppressLint({"UseSwitchCompatOrMaterialCode","UseCompatLoadingForDrawables","SetTextI18n"})
 public class MainActivity extends Activity {
@@ -105,24 +108,9 @@ public class MainActivity extends Activity {
     public void insearch(View view) {
         EditText edit_insearch = findViewById(R.id.edit_insearch);
         ImageButton btn_insearch = findViewById(R.id.btn_insearch);
+        initEditaTextAction(edit_insearch);
         if(edit_insearch.getVisibility() == View.GONE){
             edit_insearch.setVisibility(View.VISIBLE);
-            if (!EditSearchInit){
-                EditSearchInit = true;
-                edit_insearch.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    }
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    }
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                        String inText = editable.toString();
-                        initMainActivityListView(searchAppView(inText));
-                    }
-                });
-            }
             btn_insearch.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_close_24, getTheme()));
             edit_insearch.setOnEditorActionListener((textView, actionId, keyEvent) -> {
                 if (actionId == EditorInfo.IME_ACTION_NEXT) {
@@ -140,6 +128,25 @@ public class MainActivity extends Activity {
         ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE))
                 .hideSoftInputFromWindow(view.getWindowToken(), 0);
         btn_insearch.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_search_24, getTheme()));
+    }
+
+    private void initEditaTextAction(EditText edit_insearch) {
+        if (!EditSearchInit){
+            EditSearchInit = true;
+            edit_insearch.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                }
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                }
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    String inText = editable.toString();
+                    initMainActivityListView(searchAppView(inText));
+                }
+            });
+        }
     }
 
     private List<PackageInfo> searchAppView(String intext) {
