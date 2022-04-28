@@ -1,6 +1,5 @@
 package ss.colytitse.setappfull;
 
-import android.os.Environment;
 import android.util.Log;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +11,7 @@ public class SuperUser {
 
     public static String execShell(String cmd) {
         StringBuilder result = new StringBuilder();
-        Process process = null;
+        Process process;
         String line;
         try {
             process = Runtime.getRuntime().exec("su -c " + cmd);
@@ -26,27 +25,12 @@ public class SuperUser {
         return result.toString();
     }
 
-    public static void copyConfigFile(boolean is){
-        String user_path = Environment.getDataDirectory() + "/data/" + BuildConfig.APPLICATION_ID + "/shared_prefs/";
+    public static void copyConfigFile(String content){
         String sys_path = "/data/system/shared_prefs/";
-        String file = "config.xml";
-        String log = "";
-        if (is) {
-            log += execShell("mkdir " + user_path);
-            log += execShell(String.format("\\cp %s%s %s%s", sys_path, file, user_path, file));
-            file = String.format("%s%s", user_path,file);
-        }else {
-            log += execShell("mkdir " + sys_path);
-            log += execShell(String.format("\\cp %s%s %s%s", user_path, file, sys_path, file));
-            file = String.format("%s%s", sys_path, file);
-        }
-        log += execShell(String.format("chmod 644 %s", file));
+        String data = String.format("<?xml version='1.0' encoding='utf-8' standalone='yes' ?>" +
+                "<map><string name=\\\"content\\\">%s</string></map>", content);
+        String log = execShell("mkdir " + sys_path);
+        log += execShell("echo \"" + data + "\" > " + sys_path + "config.xml");
         Log.d(TAG, "copyConfigFile: " + log);
-    }
-
-    public static void delete(){
-        String log = execShell(String.format("rm -f %s/data/%s/shared_prefs/config.xml",
-                Environment.getDataDirectory(),BuildConfig.APPLICATION_ID));
-        Log.d(TAG, "delete: " + log);
     }
 }

@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">SetAppFull</string>
     <string name="xposeddescription">set app to full screen run.</string>
+    <string name="this_version">VersionName：-> ver.11.45.14</string>
+    <string name="list_system">SystemApp</string>
+    <string name="list_user">UserApp</string>
+    <string name="show_message">Saved successfully, Effective after system restart!</string>
+    <string name="search_text">Search…</string>
     <string-array name="xposedscope">
         <item>android</item>
     </string-array>

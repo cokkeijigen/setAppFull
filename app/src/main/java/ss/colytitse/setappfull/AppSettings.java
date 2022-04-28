@@ -28,6 +28,8 @@ public class AppSettings {
     private static final String TAG = "test_";
     private static final String config_name = "config";
     private final SharedPreferences getPrefs;
+    public final static int SYSTEM_VIEW = 0;
+    public final static int USER_VIEW = 1;
     private String content;
 
     public AppSettings(Context context) {
@@ -39,26 +41,25 @@ public class AppSettings {
         StringBuilder data = new StringBuilder(content);
         if(!content.contains("#" + pkgn + "#"))
             data.append("#").append(pkgn).append("#");
-        getPrefs.edit().putString("content", data.toString()).commit();
-        SuperUser.copyConfigFile(false);
+        getPrefs.edit().putString("content", data.toString()).apply();
+        SuperUser.copyConfigFile(data.toString());
     }
 
     public void delData(String pkgn){
-        getPrefs.edit().putString("content", (this.content = content.replace("#" + pkgn + "#", ""))).commit();
-        SuperUser.copyConfigFile(false);
+        getPrefs.edit().putString("content", (this.content = content.replace("#" + pkgn + "#", ""))).apply();
+        SuperUser.copyConfigFile(content);
     }
 
     public boolean getData(String pkgn){
         return content.contains("#" + pkgn + "#");
     }
 
-    public boolean getOnSwitchListView() {
-        return getPrefs.getBoolean("onSwitchListView", true);
+    public static int getOnSwitchListView(Context context) {
+        return new AppSettings(context).getPrefs.getInt("onSwitchListView", USER_VIEW);
     }
 
-    public void savonSwitch(boolean value) {
-        getPrefs.edit().putBoolean("onSwitchListView", value).commit();
-        SuperUser.copyConfigFile(false);
+    public void savonSwitch(int value) {
+        getPrefs.edit().putInt("onSwitchListView", value).apply();
     }
 
     public static void setStatusBarColor(Activity activity, int color){

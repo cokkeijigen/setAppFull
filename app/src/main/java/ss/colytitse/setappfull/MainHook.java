@@ -8,11 +8,9 @@ import android.util.Log;
 import android.view.WindowManager;
 import androidx.annotation.RequiresApi;
 import java.io.File;
-import java.io.FileNotFoundException;
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
-import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 public class MainHook implements IXposedHookLoadPackage {
@@ -30,7 +28,7 @@ public class MainHook implements IXposedHookLoadPackage {
         if (!lpparam.packageName.equals(lpparam.processName) && !lpparam.packageName.equals("android"))
             return;
         Log.d(TAG, "SetAppFull: 运行成功！");
-        
+
         String configContent = loadConfig();
         if (configContent.equals("")) return;
 
