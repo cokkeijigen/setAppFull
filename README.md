@@ -4,7 +4,9 @@ set app to full screen run.<br>
 强制让异形屏幕的手机运行游戏时可以全屏显示无黑边<br>
 借鉴了[BCRfullscreen](https://github.com/KitsunePie/BCRfullscreen)<br>
 #### 版本更新说明<br>
-
+v1.0 请自行跳转[https://github.com/cokkeijigen/setAppFull_1.0](https://github.com/cokkeijigen/setAppFull_1.0)<br>
+beta-1.2:<br>
+  先发布试试水怎么样<br>
 # 勾选应用重启系统即可 <br>
 ### （注意：非类原生的系统谨慎使用，例如MIUI可能会卡在开机页）<br>
 ![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/image0.png)<br>
