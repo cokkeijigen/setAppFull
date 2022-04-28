@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -26,6 +28,7 @@ public class MainActivity extends Activity {
     private static final String TAG = "test_";
     private List<PackageInfo> systemAppList;
     private List<PackageInfo> userAppList;
+    private boolean EditSearchInit = false;
     private Context mContext;
 
     private void initApplicationList() {
@@ -87,15 +90,14 @@ public class MainActivity extends Activity {
     public void onSwitchListView(View view) {
         EditText edit_insearch = findViewById(R.id.edit_insearch);
         String inText = edit_insearch.getText().toString();
-        boolean isSearchView = edit_insearch.getVisibility() == View.VISIBLE && inText.length() > 0;
         TextView appListName = findViewById(R.id.app_list_name);
         if(getOnSwitchListView(mContext) == USER_VIEW){
             new AppSettings(mContext).savonSwitch(SYSTEM_VIEW);
-            initMainActivityListView(isSearchView ? searchAppView(inText) : systemAppList);
+            initMainActivityListView(searchAppView(inText));
             appListName.setText(String.format("(%s)", getResources().getString(R.string.list_system)));
         }else {
             new AppSettings(mContext).savonSwitch(USER_VIEW);
-            initMainActivityListView(isSearchView ? searchAppView(inText) : userAppList);
+            initMainActivityListView(searchAppView(inText));
             appListName.setText(String.format("(%s)", getResources().getString(R.string.list_user)));
         }
     }
@@ -105,14 +107,27 @@ public class MainActivity extends Activity {
         ImageButton btn_insearch = findViewById(R.id.btn_insearch);
         if(edit_insearch.getVisibility() == View.GONE){
             edit_insearch.setVisibility(View.VISIBLE);
+            if (!EditSearchInit){
+                EditSearchInit = true;
+                edit_insearch.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    }
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    }
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        String inText = editable.toString();
+                        initMainActivityListView(searchAppView(inText));
+                    }
+                });
+            }
             btn_insearch.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_close_24, getTheme()));
             edit_insearch.setOnEditorActionListener((textView, actionId, keyEvent) -> {
                 if (actionId == EditorInfo.IME_ACTION_NEXT) {
                     ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE))
                             .hideSoftInputFromWindow(view.getWindowToken(), 0);
-                    String intext = textView.getText().toString();
-                    List<PackageInfo> result = searchAppView(intext);
-                    if (result != null) initMainActivityListView(result);
                     return true;
                 }
                 return false;
@@ -128,9 +143,10 @@ public class MainActivity extends Activity {
     }
 
     private List<PackageInfo> searchAppView(String intext) {
-        if (intext.length() < 1) return null;
+        List<PackageInfo> appList = getOnSwitchListView(mContext) == USER_VIEW ? userAppList : systemAppList;
+        if (intext.length() < 1) return appList;
         List<PackageInfo> result = new ArrayList<>();
-        for (PackageInfo info : getOnSwitchListView(mContext) == USER_VIEW ? userAppList : systemAppList)
+        for (PackageInfo info : appList)
             if (info.packageName.contains(intext) || getPackageManager().getApplicationLabel(info.applicationInfo).toString().contains(intext))
                 result.add(info);
         return result;

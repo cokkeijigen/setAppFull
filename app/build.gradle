@@ -8,8 +8,8 @@ android {
         applicationId "ss.colytitse.setappfull"
         minSdkVersion 27
         targetSdkVersion 32
-        versionCode 120
-        versionName "beta-1.2"
+        versionCode 131
+        versionName "ver-1.3.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -17,7 +17,7 @@ android {
         variant ->
             variant.outputs.all {
                 outputFileName
-                        = "setappfull_${variant.versionName}_${new Date().format("HHmmss", TimeZone.getTimeZone("GMT+8"))}.apk"
+                    = "setappfull_${variant.versionName}_${new Date().format("yyMMddHHmm", TimeZone.getTimeZone("GMT+8"))}.apk"
             }
     }
 
