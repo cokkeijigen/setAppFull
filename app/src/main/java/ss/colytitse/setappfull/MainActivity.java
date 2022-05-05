@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
         TextView appListName = findViewById(R.id.app_list_name);
         setVersionName.setText(String.format("%s%s",
                 setVersionName.getText().toString().split("->")[0], getVersionName(mContext)));
-        appListName.setText(String.format("(%s)", AppViewList == USER_VIEW ? getResources().getString(R.string.list_user) : getResources().getString(R.string.list_system)));
+        appListName.setText(String.format("(%s)", getResources().getString(AppViewList == USER_VIEW ? R.string.list_user : R.string.list_system)));
         initMainActivityListView(AppViewList == USER_VIEW ? userAppList : systemAppList);
     }
 
