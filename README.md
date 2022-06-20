@@ -13,9 +13,12 @@ ver-1.3：<br>
 　　优化1.2的配置文件的存储（妈的上个版本写的太傻逼了，现在改回来最初的方案）<br>
 ver-1.3.1<br>
 　　优化搜索内容<br>
+beta-1.3.2：<br>
+    配置存储方式更换为NewXSharePrefs，因此可能需要重新勾选目标应用
+    新增作用域模式（免重启）<br>
 # 勾选应用重启系统即可 <br>
 ### （注意：非类原生的系统谨慎使用，例如MIUI可能会卡在开机页）<br>
-![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/image0.png)<br>
-![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/image.png)<br>
-![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/image1.png)<br>
-![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/image2.png)<br>
+![Image text](https://github.com/Xposed-Modules-Repo/ss.colytitse.setappfull/blob/main/image0.png)<br>
+![Image text](https://github.com/Xposed-Modules-Repo/ss.colytitse.setappfull/blob/main/image.png)<br>
+![Image text](https://github.com/Xposed-Modules-Repo/ss.colytitse.setappfull/blob/main/image1.png)<br>
+![Image text](https://github.com/Xposed-Modules-Repo/ss.colytitse.setappfull/blob/main/image2.png)<br>
