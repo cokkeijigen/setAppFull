@@ -7,4 +7,5 @@
     <color name="pkgn_con">#B7FFFFFF</color>
     <color name="main_content">#121212</color>
     <color name="launcher_background">#121212</color>
+    <color name="main_text_color">#E6E6E6</color>
 </resources>

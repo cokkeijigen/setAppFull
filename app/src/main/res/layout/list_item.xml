@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_gravity="center"
     android:padding="5dp"
-    android:background="@drawable/button_background"
+    android:id="@+id/item_root_view"
     android:layout_height="90dp">
     <ImageView
         android:id="@+id/app_icon"
@@ -24,23 +24,44 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="应用名称"
+            android:textColor="@color/main_text_color"
             android:textSize="20sp" />
         <TextView
             android:id="@+id/app_version"
             android:layout_width="match_parent"
             android:layout_height="20dp"
+            android:textColor="@color/main_text_color"
             android:text="1.1.4 (514)" />
         <TextView
             android:id="@+id/app_pkgn"
             android:layout_width="match_parent"
             android:layout_height="20dp"
+            android:textColor="@color/main_text_color"
             android:text="com.xxxxxx.xx" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="80dp"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
     <Switch
         android:id="@+id/set_switch"
         android:layout_width="80dp"
         android:paddingEnd="10dp"
-        android:layout_height="match_parent"
+        android:thumbTint="#3998FF"
+        android:trackTint="#0088F4"
+        android:layout_marginTop="20dp"
+        android:layout_height="30dp"
         tools:ignore="RtlSymmetry,UseSwitchCompatOrMaterialXml" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mode_state"
+        android:text=""
+        android:textStyle="bold"
+        android:textColor="#F84D4D"
+        android:textSize="10sp"
+        android:gravity="center"
+        tools:ignore="SmallSp" />
+    </LinearLayout>
 
 </LinearLayout>

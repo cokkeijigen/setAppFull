@@ -15,4 +15,5 @@
     <color name="pkgn_con">#4D4646</color>
     <color name="main_content">#FFFFFF</color>
     <color name="launcher_background">#3DDC84</color>
+    <color name="main_text_color">#3F4245</color>
 </resources>
