@@ -18,8 +18,8 @@ beta-1.3.2：<br>
 　　新增作用域模式（免重启）<br>
 # 勾选应用重启系统即可 <br>
 ### （注意：非类原生的系统谨慎使用，例如MIUI可能会卡在开机页）<br>
-![Image text](https://github.com/Xposed-Modules-Repo/ss.colytitse.setappfull/blob/main/image0.png)<br>
-![Image text](https://github.com/Xposed-Modules-Repo/ss.colytitse.setappfull/blob/main/image.png)<br>
-![Image text](https://github.com/Xposed-Modules-Repo/ss.colytitse.setappfull/blob/main/image3.png)<br>
-![Image text](https://github.com/Xposed-Modules-Repo/ss.colytitse.setappfull/blob/main/image1.png)<br>
-![Image text](https://github.com/Xposed-Modules-Repo/ss.colytitse.setappfull/blob/main/image2.png)<br>
+![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/image0.png)<br>
+![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/image.png)<br>
+![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/image3.png)<br>
+![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/image1.png)<br>
+![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/image2.png)<br>
