@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">SetAppFull</string>
+    <string name="xposeddescription">set app to full screen run.</string>
+    <string name="this_version">VersionName：-> ver.11.45.14</string>
+    <string name="list_system">SystemApp</string>
+    <string name="mode_1">Mode 1</string>
+    <string name="mode_2">Mode 2</string>
+    <string name="list_user">UserApp</string>
+    <string name="show_message">Mode 2 takes effect after the android is restarted!</string>
+    <string name="show_message_1" translatable="false">模式1，如果使用带有作用域的Xposed管理器，请在管理器中勾选目标应用！</string>
+    <string name="search_text">Search…</string>
+    <string name="settings_text">Settings</string>
+    <string name="scope_mode_text">Scope Mode</string>
+    <string name="scope_mode_explain">When this mode is enabled,You can directly check the target application in the xposed manager with scope to use mode 1.</string>
+    <string name="mode_explain_1"  translatable="false">该模式工作方式为Hook目标应用实现。</string>
+    <string name="mode_explain_2"  translatable="false">该模式工作方式是勾住安卓系统的显示策略类实现，可能需要重启。</string>
+    <string name="hello_world" translatable="false">如果您是第一次使用，请仔细阅读以下说明。\n本模块会对系统框架进行修改，可能会导致无法开机等问题。\n特别是非类原生的系统请谨慎使用，例如MIUI可能会卡在开机页，请在使用前请做好救砖的准备。</string>
+    <string name="hello_world_1" translatable="false">没有其他问题可以直接返回，下次启动则不会先跳转到此界面。</string>
+    <string name="hello" translatable="false">欢迎使用本Xposed模块！</string>
+    <string name="explain" translatable="false">这是用于修改应用能强制显示在异形屏幕的非安全区域的Xposed模块。\n此模块的对于异形屏幕显示的解决方案不是万能的，也就是说本模块不一定适用于全部应用或者游戏，如遇到不生效或者显示异常或者需适配请自行联系应用或者游戏的开发商，向我提交问题并没有什么卵用。</string>
+    <string-array name="xposedscope">
+        <item>android</item>
+    </string-array>
+</resources>

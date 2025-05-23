@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">设置应用全屏</string>
+    <string name="xposeddescription">将应用突破次元壁，覆盖异形屏幕限制全面显示_(:з」∠)_</string>
+    <string name="this_version">当前版本：-> ver.11.45.14</string>
+    <string name="list_system">系统应用</string>
+    <string name="list_user">用户应用</string>
+    <string name="show_message">模式2需要重启系统后生效！</string>
+    <string name="search_text">搜索…</string>
+    <string name="settings_text">设置</string>
+    <string name="mode_1">模式 1</string>
+    <string name="mode_2">模式 2</string>
+    <string name="scope_mode_text">作用域模式</string>
+    <string name="scope_mode_explain">该模式启用后，可以直接在带有作用域的Xposed管理器中直接勾选目标应用。</string>
+</resources>
