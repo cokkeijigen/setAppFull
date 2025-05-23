@@ -24,8 +24,8 @@ set app to full screen run.<br>
 
 # 勾选应用重启系统即可 <br>
 ### （注意：非类原生的系统谨慎使用，例如MIUI可能会卡在开机页）<br>
-![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/Pictures/image0.png)<br>
-![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/Pictures/image.png)<br>
-![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/Pictures/image3.png)<br>
-![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/Pictures/image1.png)<br>
-![Image text](https://github.com/cokkeijigen/setAppFull/blob/master/Pictures/image2.png)<br>
+![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image0.png)<br>
+![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image.png)<br>
+![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image3.png)<br>
+![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image1.png)<br>
+![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image2.png)<br>
