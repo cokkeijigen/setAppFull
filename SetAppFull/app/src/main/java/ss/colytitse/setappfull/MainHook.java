@@ -19,23 +19,17 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 public class MainHook implements IXposedHookLoadPackage {
 
     private static final String TAG = "debug_test_";
+    private String SystemModeList = "";
+    private String AppModeList = "";
+    private boolean IsScopeMode = true;
 
-    private  static String getSystemMode() {
+    private void update()
+    {
         XSharedPreferences xsp = new XSharedPreferences(BuildConfig.APPLICATION_ID,"config");
         xsp.makeWorldReadable();
-        return xsp.getString("SystemMode", "");
-    }
-
-    private  static String getAppMode() {
-        XSharedPreferences xsp = new XSharedPreferences(BuildConfig.APPLICATION_ID,"config");
-        xsp.makeWorldReadable();
-        return xsp.getString("AppMode", "");
-    }
-
-    private  static Boolean is_scope_mode_switch() {
-        XSharedPreferences xsp = new XSharedPreferences(BuildConfig.APPLICATION_ID,"config");
-        xsp.makeWorldReadable();
-        return xsp.getBoolean("scope_mode_switch", false);
+        SystemModeList = xsp.getString("SystemMode", "");
+        AppModeList = xsp.getString("TimelyMode", "");
+        IsScopeMode = xsp.getBoolean("scope_mode_switch", true);
     }
 
     @Override
@@ -44,12 +38,12 @@ public class MainHook implements IXposedHookLoadPackage {
             return;
         if (!lpparam.packageName.equals(lpparam.processName))
             return;
-
         if(lpparam.packageName.equals("android")) {
             try{
+                update();
                 onSystemMode(lpparam);
             } catch (Throwable ignored){}
-        } else if(is_scope_mode_switch() || getAppMode().contains(lpparam.packageName)) {
+        } else if(IsScopeMode || AppModeList.contains(lpparam.packageName)) {
             try{
                 onAppMode();
             } catch (Throwable ignored){}
@@ -67,7 +61,10 @@ public class MainHook implements IXposedHookLoadPackage {
                         WindowManager.LayoutParams attrs = (WindowManager.LayoutParams) getObjectField(param.args[0], "mAttrs");
                         if (attrs.type > WindowManager.LayoutParams.LAST_APPLICATION_WINDOW)
                             return;
-                        if (getSystemMode().contains(attrs.packageName)) {
+                        if(attrs.packageName.equals(BuildConfig.APPLICATION_ID)) {
+                            update();
+                        }
+                        else if (SystemModeList.contains(attrs.packageName)) {
                             attrs.layoutInDisplayCutoutMode = LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
                         }
                     }
