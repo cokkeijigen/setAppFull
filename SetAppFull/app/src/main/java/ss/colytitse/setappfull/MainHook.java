@@ -6,10 +6,14 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import androidx.annotation.RequiresApi;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.Date;
+
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
@@ -22,6 +26,7 @@ public class MainHook implements IXposedHookLoadPackage {
     private String SystemModeList = "";
     private String AppModeList = "";
     private boolean IsScopeMode = true;
+    private long lastUpdateTime = 0;
 
     private void update()
     {
@@ -30,6 +35,7 @@ public class MainHook implements IXposedHookLoadPackage {
         SystemModeList = xsp.getString("SystemMode", "");
         AppModeList = xsp.getString("TimelyMode", "");
         IsScopeMode = xsp.getBoolean("scope_mode_switch", true);
+        lastUpdateTime = System.currentTimeMillis();
     }
 
     @Override
@@ -62,7 +68,9 @@ public class MainHook implements IXposedHookLoadPackage {
                         if (attrs.type > WindowManager.LayoutParams.LAST_APPLICATION_WINDOW)
                             return;
                         if(attrs.packageName.equals(BuildConfig.APPLICATION_ID)) {
-                            update();
+                            if(System.currentTimeMillis() - lastUpdateTime >= 35) {
+                                update();
+                            }
                         }
                         else if (SystemModeList.contains(attrs.packageName)) {
                             attrs.layoutInDisplayCutoutMode = LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
