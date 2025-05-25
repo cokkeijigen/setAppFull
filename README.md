@@ -22,7 +22,8 @@ set app to full screen run.<br>
    - 适配安卓15
    - 优化系统模式，重启一次后添加新应用或游戏无需再重启
    - 之前的签名弄丢了，如果有安装旧版的需要卸载重装
-
+- ver-1.3.4：
+  - 修复在安卓15上默认软件包管理器安装失败的问题
 # 勾选应用重启系统即可 <br>
 ### （注意：非类原生的系统谨慎使用，例如MIUI可能会卡在开机页）<br>
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image0.png)<br>
