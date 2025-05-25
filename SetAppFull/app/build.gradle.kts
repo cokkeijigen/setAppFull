@@ -6,7 +6,6 @@ import java.util.TimeZone
 plugins {
     alias(libs.plugins.android.application)
 }
-
 android {
     namespace = "ss.colytitse.setappfull"
     compileSdk = 35
@@ -15,9 +14,9 @@ android {
         applicationId = "ss.colytitse.setappfull"
         minSdk =  27
         //noinspection ExpiredTargetSdkVersion
-        targetSdk = 23
-        versionCode = 133
-        versionName = "1.3.3"
+        targetSdk = 27
+        versionCode = 134
+        versionName = "1.3.4"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -50,8 +49,7 @@ android {
 }
 
 dependencies {
-    compileOnly(libs.xposedapi)
-//    implementation(libs.appcompat)
+    compileOnly(libs.de.robv.android.xposed.api)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
