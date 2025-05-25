@@ -9,7 +9,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.view.View;
-
 import androidx.core.content.ContextCompat;
 
 import ss.colytitse.setappfull.R;
