@@ -1,5 +1,5 @@
 # SetAppFull/设置应用全屏
-set app to full screen run.<br>
+Set app to full screen run _(:з」∠)_.<br>
 将应用突破次元壁，覆盖异形屏幕限制全面显示_(:з」∠)_<br>
 强制让异形屏幕的手机运行游戏时可以全屏显示无黑边<br>
 功能借鉴了[BCRfullscreen](https://github.com/KitsunePie/BCRfullscreen)<br>
@@ -24,6 +24,9 @@ set app to full screen run.<br>
    - 之前的签名弄丢了，如果有安装旧版的需要卸载重装
 - ver-1.3.4：
   - 修复在安卓15上默认软件包管理器安装失败的问题
+- ver-1.3.5:
+  - 新增若干个方法的HOOK（针对模式1）
+  - 对UI语言英语的完整支持
 # 勾选应用重启系统即可 <br>
 ### （注意：非类原生的系统谨慎使用，例如MIUI可能会卡在开机页）<br>
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image0.png)<br>
