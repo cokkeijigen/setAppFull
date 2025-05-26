@@ -15,8 +15,8 @@ android {
         minSdk =  27
         //noinspection ExpiredTargetSdkVersion
         targetSdk = 27
-        versionCode = 134
-        versionName = "1.3.4"
+        versionCode = 135
+        versionName = "1.3.5"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -33,26 +33,27 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     applicationVariants.all {
-        outputs.all {
+        outputs.all( {
             val outputs = this as BaseVariantOutputImpl
             val dateFormat = SimpleDateFormat("yyMMddHHmm")
             dateFormat.timeZone = TimeZone.getTimeZone("GMT+8")
             outputs.outputFileName = "setappfull_${versionName}_${dateFormat.format(Date())}.apk"
-        }
+        })
     }
 }
 
 dependencies {
     compileOnly(libs.de.robv.android.xposed.api)
     implementation(libs.material)
+    implementation(libs.swiperefreshlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
-
