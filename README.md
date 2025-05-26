@@ -30,8 +30,8 @@ Set app to full screen run _(:з」∠)_.<br>
   - 对UI语言英语的完整支持
 # 勾选应用重启系统即可 <br>
 ### （注意：非类原生的系统谨慎使用，例如MIUI可能会卡在开机页）<br>
-![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image0.png)<br>
-![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image.png)<br>
-![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image3.png)<br>
-![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image1.png)<br>
-![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image2.png)<br>
+![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image00.png)<br>
+![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image01.png)<br>
+![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image02.png)<br>
+![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image03.png)<br>
+![Image text](https://raw.githubusercontent.com/cokkeijigen/setAppFull/master/Pictures/image04.png)<br>
