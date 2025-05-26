@@ -19,8 +19,8 @@
         This mode works by hooking the implementation of Android\'s display policy class, and it requires a reboot to take effect.
     </string>
     <string name="hello_world">
-        If this is your first time using it, please read the following instructions carefully.
-        This module modifies the system framework and may cause issues like boot failure.
+        If this is your first time using it, please read these instructions carefully.
+        This module modifies the system framework and could lead to issues like being unable to boot into the system.
         Please be prepared for recovery before use.
     </string>
     <string name="hello_world_1">You can return directly now, and next time you launch, it won\'t jump to this screen first.</string>
