@@ -1,33 +1,27 @@
 package ss.colytitse.setappfull.app;
 
-import static android.content.Context.MODE_WORLD_READABLE;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.view.View;
 import androidx.core.content.ContextCompat;
-
 import ss.colytitse.setappfull.R;
 
+@SuppressWarnings({"unused"})
 @SuppressLint({"ApplySharedPref", "WorldReadableFiles"})
 public class AppSettings {
 
-    private static final String TAG = "test_";
+    private static final String TAG = "AppSettings";
     private static final String config_name = "config";
-    private static final String configFileName = "app_config";
     public final static int SYSTEM_VIEW = 0;
     public final static int USER_VIEW = 1;
     public final static int MODE_1 = 1;
     public final static int MODE_2 = 2;
     public final static int NO_SET = -1;
-    private String content;
 
     public static SharedPreferences configData(Context context){
-        return context.getSharedPreferences(config_name, MODE_WORLD_READABLE);
+        return context.getSharedPreferences(config_name, Context.MODE_WORLD_READABLE);
     }
 
     public static void deleteSelection(Context context, String pkgn){
@@ -85,7 +79,7 @@ public class AppSettings {
         return NO_SET;
     }
 
-    public static int getOnSwitchListView(Context context) {
+    public static int getSwitchListType(Context context) {
         return configData(context).getInt("onSwitchListView", USER_VIEW);
     }
 
@@ -116,19 +110,9 @@ public class AppSettings {
 
     public static void setActivityStatusBar(Activity activity){
         setStatusBarColor(activity, R.color.toolbar);
-        if(activity.getApplicationContext().getResources().getConfiguration().uiMode == 0x11)
-            activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-    }
-
-    public static String getVersionName(Context context) {
-        try {
-            PackageManager packageManager = context.getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(
-                    context.getPackageName(), 0);
-            return packageInfo.versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+        if(activity.getApplicationContext().getResources().getConfiguration().uiMode == 0x11) {
+            activity.getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
-        return null;
     }
 }
