@@ -88,7 +88,7 @@
                     android:textSize="14sp"
                     android:textColor="@color/main_text_color"
                     android:lineSpacingExtra="5dp"
-                    android:text="@string/scope_mode_explain"
+                    android:text="@string/scope_mode_description"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
             </LinearLayout>
@@ -152,7 +152,7 @@
                 android:background="@drawable/button_background2"
                 android:layout_height="match_parent">
                 <TextView
-                    android:text="说明"
+                    android:text="@string/description_title"
                     android:textColor="@color/text"
                     android:padding="10dp"
                     android:textSize="18sp"
@@ -165,7 +165,7 @@
                     android:padding="10dp"
                     android:textSize="14sp"
                     android:lineSpacingExtra="5dp"
-                    android:text="@string/explain"
+                    android:text="@string/description_text"
                     android:layout_width="match_parent"
                     android:textColor="@color/main_text_color"
                     android:layout_height="match_parent"/>
@@ -178,7 +178,7 @@
                 android:background="@drawable/button_background2"
                 android:layout_height="match_parent">
                 <TextView
-                    android:text="关于"
+                    android:text="@string/about_text"
                     android:textColor="@color/text"
                     android:padding="10dp"
                     android:textSize="18sp"
@@ -194,7 +194,7 @@
                     android:lineSpacingExtra="5dp"
                     android:textStyle="bold"
                     android:gravity="center"
-                    android:text="-| By cokkeijigen - GitHub |-"
+                    android:text="@string/github_cokkeijigen"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
                 <ImageView
