@@ -22,7 +22,9 @@
                 android:paddingStart="10dp"
                 android:layout_height="match_parent"
                 tools:ignore="RtlSymmetry,UselessParent">
+
                 <TextView
+                    android:onClick="onBoolbarClick"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
@@ -30,6 +32,7 @@
                     android:textColor="@color/toolbar_title"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -81,7 +84,7 @@
             android:layout_gravity="end"
             android:layout_marginEnd="10dp"
             android:background="#00000000"
-            android:onClick="insearch"
+            android:onClick="onSearchButtonClick"
             android:src="@drawable/ic_baseline_search_24"
             tools:ignore="ContentDescription"/>
     </androidx.appcompat.widget.Toolbar>
@@ -96,17 +99,20 @@
         android:background="@drawable/edit_text_background"
         android:layout_height="50dp"
         tools:ignore="Autofill,TextFields" />
-
-    <ListView
-        android:id="@+id/app_items"
-        android:clickable="false"
-        android:paddingTop="10dp"
-        android:divider="#00000000"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:dividerHeight="13dp"
-        android:focusableInTouchMode="false"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/app_items"
+            android:clickable="false"
+            android:paddingTop="10dp"
+            android:divider="#00000000"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:dividerHeight="13dp"
+            android:focusableInTouchMode="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>
