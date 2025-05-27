@@ -1,7 +1,6 @@
 package ss.colytitse.setappfull;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 /**
