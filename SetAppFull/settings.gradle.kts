@@ -20,6 +20,7 @@ dependencyResolutionManagement {
     }
 }
 
+
 rootProject.name = "SetAppFull"
 include(":app")
  
